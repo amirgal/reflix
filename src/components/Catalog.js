@@ -29,7 +29,7 @@ class Catalog extends Component {
                 </div>
                 <div className="rented-container">
                     {this.state.movies.map(m => 
-                        {if(m.isRented){return <Movie key={m.id} movie={m}/>}})}
+                        {if(m.isRented){return <Movie rentMovie={this.rentMovie.bind(this)} key={m.id} movie={m}/>}})}
                 </div>
                 <div className="catalog-container">
                     <h4>Catalog</h4>

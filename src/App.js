@@ -8,7 +8,12 @@ class App extends Component {
   constructor(){
     super()
     this.state={
-      
+        users:[
+          {name:'Amir',color:'red'},
+          {name:'Tomer',color:'green'},
+          {name:'Gal',color:'magenta'},
+          {name:'Ben',color:'maroon'}
+      ]
     }
   }
   render() {
@@ -21,7 +26,7 @@ class App extends Component {
             <Link to="/catalog">Catalog</Link>
             <span className="logo">Reflix</span>
           </div>
-          <Route path="/" exact render={() => <Landing />}/>
+          <Route path="/" exact render={() => <Landing users={this.state.users}/>}/>
           <Route path="/catalog" exact render={() => <Catalog items={Object.keys(state)} />} />
         </div>
       </Router>

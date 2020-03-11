@@ -2,24 +2,20 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom'
 
 class Landing extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
-            users:[
-                {name:'Amir',color:'red'},
-                {name:'Tomer',color:'red'},
-                {name:'Gal',color:'red'},
-                {name:'Ben',color:'red'}
-            ]
+            users:this.props.users
         }
     }
     render() {
         const users = this.state.users
         return (
         <div className="App users">
-            <Link to="/catalog">link</Link>
-                {users.map(u => <div key={u.name} className="user">{u.name}</div>)} 
-            </div>
+            {users.map(u => <Link to="/catalog">
+                    <div key={u.name} className="user" style={{"background-color": u.color}}>{u.name}</div>
+                </Link>)} 
+        </div>
         )
     }
 }
