@@ -7,11 +7,13 @@ class Catalog extends Component {
         this.state = {
             movies: this.props.movies,
             input: "",
-            budget:10
+            budget:10,
+            user:this.props.user
         }
     }
 
     rentMovie = (id) =>{
+        const userId = this.state.user.userId
         const movie = this.state.movies.find(m => m.id == id)
         if(movie.isRented){
             this.setState({budget:this.state.budget+3})
@@ -35,8 +37,8 @@ class Catalog extends Component {
             <div>
                 <div className="search-bar">
                     <input type="text" value={this.state.input} onChange={this.handleInput.bind(this)} className="search-input" placeholder="  Search a movie..."/>
-                    <span className="budget"><h4>BUDGET: {this.state.budget} $</h4></span>
-                    <span className="user-name"><h4>User: Amir</h4></span>
+                    <span className="budget"><h4>BUDGET: {this.state.user.budget} $</h4></span>
+                    <span className="user-name"><h4>User: {this.state.user.name}</h4></span>
                 </div>
                 <div className="movie-container">
                     {this.state.movies.map(m => 

@@ -10,10 +10,10 @@ class App extends Component {
     super()
     this.state={
         users:[
-          {name:'Amir',color:'red'},
-          {name:'Tomer',color:'green'},
-          {name:'Gal',color:'magenta'},
-          {name:'Ben',color:'maroon'}
+          {id:0,name:'Amir',color:'red',budget:20,rentedIds:[]},
+          {id:1,name:'Tomer',color:'green',budget:15,rentedIds:[]},
+          {id:2,name:'Gal',color:'magenta',budget:18,rentedIds:[]},
+          {id:3,name:'Ben',color:'maroon',budget:22,rentedIds:[]}
       ],
       movies: [
         { id: 0, isRented: false, title: "Tarzan", year: 1999, img: "https://vignette.wikia.nocookie.net/disney-fan-fiction/images/4/42/Tarzan_2004_cover.jpg/revision/latest?cb=20140331030811", descrShort: "Tarzan was born into wealth but raised into incredible misfortune. Shiprweck, parents mauled by a jaguar. Luckily, a troop of gorillas took him in, but the Big Daddy gorilla never took a liking to him. That is, until the end when it's too late. Why is it too late? Watch and find out." },
@@ -39,9 +39,10 @@ class App extends Component {
           <div id="main-links">
             <Link to="/"><h4>Home</h4></Link>
             <Link to="/catalog"><h4>Catalog</h4></Link>
-            <span className="logo"><h4>Reflix</h4></span>
+            <span className="logo">REFLIX</span>
           </div>
           <Route path="/movie/:movieId" exact render={({match}) => <MovieDetail movie={this.state.movies[match.params.movieId]}/>}/>
+          <Route path="/catalog/:userId" exact render={({match}) => <Catalog movies={this.state.movies} user={this.state.users[match.params.userId]}/>}/>
           <Route path="/" exact render={() => <Landing users={this.state.users}/>}/>
           <Route path="/catalog" exact render={() => <Catalog movies={this.state.movies} rentMovie={this.rentMovie.bind(this)} />} />
         </div>
