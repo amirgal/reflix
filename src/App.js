@@ -75,13 +75,13 @@ class App extends Component {
         <div className="container" /*App will center*/>
           <div id="main-links">
             <Link to="/"><h4>Home</h4></Link>
-            {/* <Link to="/catalog"><h4>Catalog</h4></Link> */}
+            <Link to="/catalog/0"><h4>Catalog</h4></Link>
             <span className="logo">REFLIX</span>
           </div>
           <Route path="/movie/:movieId" exact render={({match}) => <MovieDetail movie={this.state.movies[match.params.movieId]}/>}/>
           <Route path="/catalog/:userId" exact render={({match}) => <Catalog rentMovie={this.rentMovie.bind(this)} user={this.state.users[match.params.userId]}/>}/>
           <Route path="/" exact render={() => <Landing users={this.state.users}/>}/>
-          <Route path="/catalog" exact render={() => <Catalog movies={this.state.movies} rentMovie={this.rentMovie.bind(this)} />} />
+          {/* <Route path="/catalog/" exact render={() => <Catalog movies={this.state.movies} rentMovie={this.rentMovie.bind(this)} />} /> */}
         </div>
       </Router>
     );
