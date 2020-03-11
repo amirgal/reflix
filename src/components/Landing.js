@@ -12,8 +12,8 @@ class Landing extends Component {
         const users = this.state.users
         return (
         <div className="App users">
-            {users.map(u => <Link to="/catalog">
-                    <div key={u.name} className="user" style={{"background-color": u.color}}>{u.name}</div>
+            {users.map(u => <Link to="/catalog" key={u.name}>
+                    <div key={u.name} className="user" style={{"backgroundColor": u.color}}>{u.name}</div>
                 </Link>)} 
         </div>
         )

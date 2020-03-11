@@ -1,5 +1,32 @@
+#root{
+  background-color: rgb(6, 0, 34);
+}
 .App {
   text-align: center;
+}
+
+.container {
+  color: white;
+  text-align: center;
+}
+
+#main-links{
+  display: grid;
+  grid-template-columns: 1fr 1fr 3fr;
+  text-align: center;
+}
+
+.search-bar {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  text-align: center;
+  align-items: center;
+  margin:20px;
+  height: 5%;
+}
+
+.search-input {
+  height: 2em;
 }
 
 .users{
@@ -11,13 +38,40 @@
   height: 150px;
   width: 150px;
   background-color: maroon;
-  color: white;
 }
 
 .movie {
-  /* display: grid; */
   width: 200px;
   height: 300px;
-  background-size: contain
-  
+  background-size: cover;
+  background-repeat: round;
+  border-radius: 15px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-justify: auto;
 }
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movie-details > img {
+  width: 300px;
+  border-radius: 15px;
+}
+
+.rent-btn {
+  box-shadow: 1px 1px 1px black;
+  border-radius: 50px;
+  z-index: 2;
+  margin-left: 80%;
+  margin-top: 5%;
+}
+
