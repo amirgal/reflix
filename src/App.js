@@ -66,7 +66,6 @@ class App extends Component {
           <Route path="/catalog/:userId" exact render={({match}) => 
             <Catalog rentMovie={this.rentMovie} user={this.state.users[match.params.userId]} movies={this.state.movies}/>}/>
           <Route path="/" exact render={() => <Landing users={this.state.users}/>}/>
-          {/* <Route path="/catalog/" exact render={() => <Catalog movies={this.state.movies} rentMovie={this.rentMovie.bind(this)} />} /> */}
         </div>
       </Router>
     );

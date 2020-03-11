@@ -10,10 +10,11 @@ class Movie extends Component {
 
     render() {
         const movie = this.props.movie
+        const rented = this.props.rented
         return (
             <div className="movie" style={{'backgroundImage':`url(${movie.img})`}}>
                     <button className="rent-btn" onClick={this.rentMovie.bind(this)}>
-                        {movie.isRented? '-' : '+'}
+                        {rented[movie.id] ? '-' : '+'}
                     </button>
                 <Link to={`/movie/${movie.id}`}>
                     <h4 className="movie-title">{movie.title}</h4>

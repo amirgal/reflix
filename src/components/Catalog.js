@@ -6,7 +6,6 @@ class Catalog extends Component {
         super(props)
         this.state = {
             input: "",
-            // user:this.props.user
         }
     }
 
@@ -31,13 +30,16 @@ class Catalog extends Component {
                     <span className="budget"><h4>BUDGET: {user.budget} $</h4></span>
                     <span className="user-name"><h4>User: {user.name}</h4></span>
                 </div>
+
+                {Object.keys(user.rented).some(mId => user.rented[mId]) ? <h4>Rented Movies<hr/></h4> : <br></br>}
                 <div className="movie-container">
                     {movies.map(m => 
-                        {if(user.rented[m.id]){return <Movie rentMovie={this.rentMovie} key={m.id} movie={m}/>}})}
+                        {if(user.rented[m.id]){return <Movie rentMovie={this.rentMovie} key={m.id} movie={m} rented={user.rented}/>}})}
                 </div>
+                
                 <h4>Catalog</h4><hr/>
                 <div className="movie-container">
-                    {relevantMovies.map(m => <Movie rentMovie={this.rentMovie} key={m.id} movie={m}/>)}
+                    {relevantMovies.map(m => <Movie rentMovie={this.rentMovie} key={m.id} movie={m} rented={user.rented}/>)}
                 </div>
             </div>
         )
