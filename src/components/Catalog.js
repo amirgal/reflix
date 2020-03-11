@@ -5,25 +5,15 @@ class Catalog extends Component {
     constructor(props){
         super(props)
         this.state = {
-            movies: this.props.movies,
+            movies: this.props.user.userMovies,
             input: "",
-            budget:10,
             user:this.props.user
         }
     }
 
-    rentMovie = (id) =>{
-        const userId = this.state.user.userId
-        const movie = this.state.movies.find(m => m.id == id)
-        if(movie.isRented){
-            this.setState({budget:this.state.budget+3})
-            this.props.rentMovie(id)
-        }else if(this.state.budget >= 3){
-            this.setState({budget:this.state.budget-3})
-            this.props.rentMovie(id)
-        } else {
-            alert('not enough funds')
-        }
+    rentMovie = (id) => {
+        const userId = this.state.user.id
+        this.props.rentMovie(id,userId)
     }
 
     handleInput(e){
@@ -32,7 +22,7 @@ class Catalog extends Component {
     }
 
     render() {
-        const relevantMovies = this.state.movies.filter(m => m.title.toLowerCase().includes(this.state.input.toLowerCase()))
+        const relevantMovies = this.state.user.userMovies.filter(m => m.title.toLowerCase().includes(this.state.input.toLowerCase()))
         return (
             <div>
                 <div className="search-bar">
@@ -41,7 +31,7 @@ class Catalog extends Component {
                     <span className="user-name"><h4>User: {this.state.user.name}</h4></span>
                 </div>
                 <div className="movie-container">
-                    {this.state.movies.map(m => 
+                    {this.state.user.userMovies.map(m => 
                         {if(m.isRented){return <Movie rentMovie={this.rentMovie} key={m.id} movie={m}/>}})}
                 </div>
                 <h4>Catalog</h4><hr/>
